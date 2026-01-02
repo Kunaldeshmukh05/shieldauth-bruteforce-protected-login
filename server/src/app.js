@@ -11,9 +11,7 @@ app.set('trust proxy', 1);
 
 // Middleware - CORS Configuration for Production
 const allowedOrigins = [
-  process.env.VITE_FRONTEND_URL || 'https://shieldauth-bruteforce-protected-login-production-fa28.up.railway.app',
-  'http://localhost:5173',
-  'http://localhost:5174' 
+  process.env.CLIENT_URL || ' https://auth-frontend-production-5b0a.up.railway.app'
 ].filter(Boolean);
 
 app.use(cors({

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 // Create axios instance
 const api = axios.create({
@@ -17,7 +17,7 @@ const api = axios.create({
  * @returns {Promise}
  */
 export const register = async (email, password) => {
-  const response = await api.post('/auth/register', { email, password });
+  const response = await api.post('/api/auth/register', { email, password });
   return response.data;
 };
 
@@ -28,7 +28,7 @@ export const register = async (email, password) => {
  * @returns {Promise}
  */
 export const login = async (email, password) => {
-  const response = await api.post('/auth/login', { email, password });
+  const response = await api.post('/api/auth/login', { email, password });
   return response.data;
 };
 
@@ -38,7 +38,7 @@ export const login = async (email, password) => {
  * @returns {Promise}
  */
 export const getStatus = async (email = '') => {
-  const response = await api.get(`/auth/status${email ? `?email=${email}` : ''}`);
+  const response = await api.get(`/api/auth/status${email ? `?email=${email}` : ''}`);
   return response.data;
 };
 
