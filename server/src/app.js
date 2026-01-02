@@ -11,7 +11,7 @@ app.set('trust proxy', 1);
 
 // Middleware - CORS Configuration for Production
 const allowedOrigins = [
-  process.env.CLIENT_URL || ' https://auth-frontend-production-5b0a.up.railway.app'
+  process.env.CLIENT_URL 
 ].filter(Boolean);
 
 app.use(cors({

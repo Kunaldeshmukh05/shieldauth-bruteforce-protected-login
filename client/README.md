@@ -16,12 +16,12 @@ Single-page application (SPA) built with React and Vite, providing:
 
 ## 🛠️ Tech Stack
 
-- **Framework:** React 18
+- **Framework:** React 19
 - **Build Tool:** Vite 5
 - **HTTP Client:** Axios
 - **Styling:** Custom CSS3 (gradients, animations)
 - **Production Server:** Express (static file serving)
-- **Deployment:** Railway
+- **Deployment:** Vercel
 
 ---
 
@@ -46,7 +46,6 @@ client/
 ├── public/
 │   └── vite.svg                  # App icon
 ├── dist/                          # Build output (generated)
-├── server.js                      # Production Express server
 ├── index.html                     # HTML template
 ├── vite.config.js                 # Vite configuration
 ├── package.json
@@ -336,36 +335,12 @@ try {
 
 ### Railway Deployment
 
-**Platform:** Railway  
-**URL:** https://auth-frontend-production-5b0a.up.railway.app
+**Platform:** Vercel
+**URL:** https://shieldauth-bruteforce-protected-log.vercel.app
 
 #### Setup Steps
 
 **1. Production Build Configuration**
-
-Install Express for static file serving:
-```bash
-npm install express
-```
-
-Create `server.js`:
-```javascript
-const express = require('express');
-const path = require('path');
-
-const app = express();
-const PORT = process.env.PORT || 5173;
-
-app.use(express.static(path.join(__dirname, 'dist')));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-});
-
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Frontend running on port ${PORT}`);
-});
-```
 
 Update `package.json`:
 ```json
@@ -378,7 +353,7 @@ Update `package.json`:
 }
 ```
 
-**2. Railway Configuration**
+**2. Vercel Configuration**
 
 - **Root Directory:** `client`
 - **Build Command:** `npm install && npm run build`
@@ -388,14 +363,14 @@ Update `package.json`:
 
 ```env
 VITE_API_URL=https://shieldauth-bruteforce-protected-login-production.up.railway.app/api
-PORT=5173
+PORT=5173 || $PORT
 NODE_ENV=production
 ```
 
 **4. Deploy**
 
 - Push to GitHub
-- Railway auto-deploys
+- Vercel auto-deploys
 - Build takes ~3 minutes
 - Check logs for errors
 
@@ -406,7 +381,7 @@ NODE_ENV=production
 curl https://shieldauth-bruteforce-protected-login-production.up.railway.app/health
 
 # Open frontend
-open https://auth-frontend-production-5b0a.up.railway.app
+open https://shieldauth-bruteforce-protected-log.vercel.app/
 ```
 
 ---
@@ -553,39 +528,6 @@ VITE_API_URL is undefined
 
 ---
 
-## 📱 Responsive Design
-
-### Breakpoints
-
-```css
-/* Mobile: < 768px */
-@media (max-width: 768px) {
-  /* Single column layout */
-  /* Smaller fonts */
-  /* Reduced padding */
-}
-
-/* Tablet: 768px - 1024px */
-@media (min-width: 768px) {
-  /* 2-column grids */
-}
-
-/* Desktop: > 1024px */
-@media (min-width: 1024px) {
-  /* 3-4 column grids */
-  /* Max-width containers */
-}
-```
-
-### Mobile Optimizations
-- Touch-friendly buttons (min 44px)
-- Readable font sizes (16px+)
-- No hover-only interactions
-- Flexible layouts (grid auto-fit)
-- Viewport meta tag
-
----
-
 ## ⚡ Performance
 
 ### Build Optimization
@@ -617,30 +559,6 @@ Total bundle size:            ~200 KB (gzipped: ~60 KB)
 - Lazy component loading (possible improvement)
 
 ---
-
-## 🎨 Customization
-
-### Change Color Scheme
-
-Edit `src/styles/App.css`:
-```css
-:root {
-  --primary-color: #6366f1;     /* Change this */
-  --success-color: #10b981;     /* And this */
-  --error-color: #ef4444;       /* And this */
-}
-```
-
-### Modify Security Messages
-
-Edit `server/src/utils/constants.js` (backend):
-```javascript
-MESSAGES: {
-  USER_SUSPENDED: 'Your custom message here',
-  IP_BLOCKED: 'Your custom message here',
-}
-```
-
 ### Adjust Lockout Timers
 
 Frontend automatically displays backend's `remainingTime`.  

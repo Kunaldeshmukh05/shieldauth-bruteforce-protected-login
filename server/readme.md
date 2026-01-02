@@ -14,7 +14,7 @@ RESTful API implementing dual-layer brute-force protection:
 
 ## 🛠️ Tech Stack
 
-- **Runtime:** Node.js 18+
+- **Runtime:** Node.js 24+
 - **Framework:** Express.js
 - **Database:** MongoDB Atlas
 - **ODM:** Mongoose
@@ -63,7 +63,7 @@ server/
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js 18+ and npm
+- Node.js 24+ and npm
 - MongoDB Atlas account (or local MongoDB)
 
 ### Installation
@@ -480,7 +480,7 @@ USER_ATTEMPT_WINDOW: 5 * 60    // Time window (5 minutes)
 USER_SUSPENSION_DURATION: 15 * 60 // Suspension duration (15 minutes)
 
 // IP-level lockout
-IP_MAX_ATTEMPTS: 100            // Failed attempts before block
+IP_MAX_ATTEMPTS:20     // Failed attempts before block
 IP_ATTEMPT_WINDOW: 5 * 60       // Time window (5 minutes)
 IP_BLOCK_DURATION: 15 * 60      // Block duration (15 minutes)
 ```

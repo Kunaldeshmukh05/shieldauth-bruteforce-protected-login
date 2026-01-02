@@ -12,9 +12,8 @@ A full-stack authentication system with advanced brute-force protection mechanis
 
 ## 🌐 Live Demo
 
-- **Frontend:** https://auth-frontend-production-5b0a.up.railway.app
-- **Backend API:** https://shieldauth-bruteforce-protected-login-production.up.railway.app
-- **API Health Check:** https://shieldauth-bruteforce-protected-login-production.up.railway.app/health
+- **Application_URL** https://shieldauth-bruteforce-protected-log.vercel.app
+
 
 ---
 
@@ -112,8 +111,9 @@ All users from IP: 🚫 IP blocked for 15 minutes
 - **cors** - Cross-origin resource sharing
 
 ### Testing & DevOps
-- **Jest** - Unit testing framework
-- **Railway** - Cloud deployment platform
+- **Jest** - Unit testing framework 
+- **Railway** - Cloud deployment platform for backend 
+- **Vercel** - Cloud deployment platform for frontend
 - **Git & GitHub** - Version control
 - **MongoDB Atlas** - Database hosting
 
@@ -166,7 +166,6 @@ shieldauth-bruteforce-protected-login/
 │   │   │   └── Dashboard.css       # Dashboard styles
 │   │   ├── App.jsx                 # Main app component
 │   │   └── main.jsx                # React entry point
-│   ├── server.js                    # Production static server
 │   ├── index.html
 │   ├── vite.config.js
 │   ├── package.json
@@ -181,7 +180,7 @@ shieldauth-bruteforce-protected-login/
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js 18+ and npm
+- Node.js 24+ and npm
 - MongoDB Atlas account (or local MongoDB)
 - Git
 
@@ -251,7 +250,7 @@ Open browser: `http://localhost:5173`
 ┌─────────────┐         ┌─────────────┐         ┌─────────────┐
 │   Client    │ HTTPS   │   Backend   │  Auth   │  MongoDB    │
 │  (React)    │ ──────> │  (Express)  │ ──────> │   Atlas     │
-│             │         │             │         │             │
+│   vercel    │         │  Render     │         │             │
 └─────────────┘         └─────────────┘         └─────────────┘
       │                        │
       │                        ├─ User Model (email, password, attempts)
