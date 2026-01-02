@@ -3,18 +3,6 @@ const { register, login, getStatus } = require('../controllers/authController');
 
 const router = express.Router();
 
-/**
- * @route   GET /api/auth/health
- * @desc    Health check endpoint
- * @access  Public
- */
-router.get('/health', async(req,res)=>{
-    res.status(200).json({
-        status: 'OK',
-        message: 'Server is running',
-        timestamp: new Date().toISOString()
-    }); 
-});
 
 /**
  * @route   POST /api/auth/register

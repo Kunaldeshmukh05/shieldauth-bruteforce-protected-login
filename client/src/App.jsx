@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import LoginForm from './components/LoginForm';
-import RegisterForm from './components/RegisterForm';
-import Dashboard from './components/Dashboard';
+import LoginForm from './components/LoginForm.jsx';
+import RegisterForm from './components/RegisterForm.jsx';
+import Dashboard from './components/DashBoard.jsx';
 import './styles/App.css';
 import './styles/Auth.css';
 import './styles/Dashboard.css';
@@ -12,12 +12,13 @@ function App() {
 
   // Check if user is already logged in (from localStorage)
   useEffect(() => {
-    const savedUser = localStorage.getItem('user');
-    if (savedUser) {
-      setUser(JSON.parse(savedUser));
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
       setCurrentView('dashboard');
     }
   }, []);
+    
 
   const handleLoginSuccess = (userData) => {
     setUser(userData);

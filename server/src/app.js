@@ -9,9 +9,24 @@ const app = express();
 // Trust proxy - important for Railway/Heroku to get correct IP
 app.set('trust proxy', 1);
 
-// Middleware
+// Middleware - CORS Configuration for Production
+const allowedOrigins = [
+  process.env.VITE_FRONTEND_URL || 'https://shieldauth-bruteforce-protected-login-production-fa28.up.railway.app',
+  'http://localhost:5173',
+  'http://localhost:5174' 
+].filter(Boolean);
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || '*',
+  origin: (origin, callback) => {
+    // Allow requests with no origin (like mobile apps or curl)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.indexOf(origin) !== -1 || process.env.NODE_ENV === 'development') {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
 }));
 app.use(express.json());
